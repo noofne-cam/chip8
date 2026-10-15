@@ -19,7 +19,7 @@ void init_memory(struct mmunit *main_memory, struct stack *main_stack)
     main_memory->memory = main_memory_raw;
 
     uint8_t *main_stack_raw = calloc(64, sizeof(uint8_t));
-    main_stack->stack = main_memory_raw;
+    main_stack->stack = main_stack_raw;
     main_stack->cursor = 0;
 }
 static struct mmunit main_memory = { 0 };

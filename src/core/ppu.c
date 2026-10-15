@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
 struct screen
 {
@@ -43,3 +44,7 @@ bool write_pix8(uint16_t pixel_anchor, uint8_t data)
     return collision;
 }
 
+void clear_screen()
+{
+    memset(main_screen.display, 0, 64*32*sizeof(uint8_t));
+}
