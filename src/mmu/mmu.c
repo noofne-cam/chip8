@@ -7,10 +7,10 @@ struct mmunit
     uint8_t *memory;
 };
 
-void init_memory(struct mmunit main_memory)
+void init_memory(struct mmunit *main_memory)
 {
     uint8_t *main_memory_raw = calloc(0xffff, sizeof(uint8_t));
-    main_memory.memory = main_memory_raw;
+    main_memory->memory = main_memory_raw;
 }
 static struct mmunit main_memory = { 0 };
 

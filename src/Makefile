@@ -2,8 +2,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Wpedantic -std=c2x
 
 MMU = -Immu mmu/mmu.c
+CORE = -Icore core/reg.c
 
 .run:
-	$(CC) $(CFLAGS) -o out $(MMU) main.c
+	$(CC) $(CFLAGS) -o out $(MMU) $(CORE) main.c
 	./out
 	del out.exe

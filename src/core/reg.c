@@ -6,10 +6,10 @@ struct reg
     uint16_t I;
 };
 
-void init_reg(struct reg main_reg)
+void init_reg(struct reg *main_reg)
 {
-    for (size_t i = 0; i < 16; ++i) { main_reg.registers[i] = 0; }
-    main_reg.I = 0;
+    for (size_t i = 0; i < 16; ++i) { main_reg->registers[i] = 0; }
+    main_reg->I = 0;
 }
 static struct reg main_reg = { 0 };
 
