@@ -10,6 +10,7 @@ struct mmunit
 struct stack
 {
     uint8_t *stack;
+    uint8_t cursor;
 };
 
 void init_memory(struct mmunit *main_memory, struct stack *main_stack)
@@ -19,6 +20,7 @@ void init_memory(struct mmunit *main_memory, struct stack *main_stack)
 
     uint8_t *main_stack_raw = calloc(64, sizeof(uint8_t));
     main_stack->stack = main_memory_raw;
+    main_stack->cursor = 0;
 }
 static struct mmunit main_memory = { 0 };
 static struct stack  main_stack  = { 0 };
@@ -33,3 +35,13 @@ void write_memory(uint16_t index, uint8_t value)
     main_memory.memory[index] = value;
 }
 
+void push_stack(uint8_t value)
+{
+    main_stack.stack[main_stack.cursor] = value;
+    main_stack.cursor = (main_stack.cursor + 1) & 0x40;
+}
+void pop_stack()
+{
+    main_stack.cursor = (main_stack.cursor - 1) & 0x40;
+    main_stack.stack[main_stack.cursor] = 0;
+}
