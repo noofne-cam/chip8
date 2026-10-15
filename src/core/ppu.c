@@ -32,7 +32,7 @@ bool write_pix8(uint16_t pixel_anchor, uint8_t data)
     bool collision = 0;
     for (size_t i = 0; i < 8; ++i)
     {
-        bool bit = (data >> i) & 0x01;
+        bool bit = (data >> (7-i)) & 0x01;
         main_screen.display[pixel_index + i] ^= bit;
         if (bit && main_screen.display[pixel_index + i] == 0)
         {
@@ -42,3 +42,4 @@ bool write_pix8(uint16_t pixel_anchor, uint8_t data)
 
     return collision;
 }
+
