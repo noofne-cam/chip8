@@ -4,6 +4,7 @@ struct reg
 {
     uint8_t registers[16];
     uint16_t I;
+    uint16_t pc;
 };
 
 void init_reg(struct reg *main_reg)
@@ -27,3 +28,6 @@ void write_reg(size_t rindex, uint8_t value)
 
 uint16_t read_I() { return main_reg.I; }
 void write_I(uint16_t value) { main_reg.I = (value & 0x0fff); }
+
+uint16_t read_pc() { return main_reg.pc; }
+void write_pc(uint16_t value) { main_reg.pc = value; }
